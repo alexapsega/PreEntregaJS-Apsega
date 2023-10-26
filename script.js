@@ -1,55 +1,44 @@
 //Preguntar al usuario su nombre
-const nombre = prompt("Ante de comenzar, por favor ingrese su nombre:")
-while (nombre === "",){
-    alert("Ingrese su nombre correctamente por favor")
-}
-//Saludo de bienvenida
-alert(`Bienvenido ${nombre}`)
-
-
-//Preguntar qué producto le interesa al ususario
-const producto = Number(prompt("¿Qué producto le interesaría comprar? Para elegir una categoría escriba el número de opción que corresponda: 1.- Remera 2.- Pantalón 3.- Buzo 4.- Ninguno"))
-//Obtenermos el precio del prodcuto
-const precio = Number(producto * 1500)
-calcular(compra){
-    switch (compra){
-    case 4:
-        //Validamos el valor ingresado
-        alert(`Usted eleigió no comprar ningún prodcuto. Hasta la próxima. Muchas gracias por su visita`)
-        break
-    case 1:
-        //Validamos el valor ingresado
-        const validacion1 = confirm(`Usted eleigió comprar Remera. Su precio es de ${precio}. ¿Desea comprar el prodcuto?`)
-        if (validacion1 === false){
-            alert(`Muchas gracias por su visita`)
-        } else {
-            const direccion = prompt (`Ingrese su dirección para realizar el envío:`)
-            alert(`Su artículo será enviado a ${direccion}`);
-            alert(`Muchas gracias por su compra`);
-        }
-        break
-    case 2:  
-        //Validamos el valor ingresado
-        const validacion2 = confirm(`Usted eleigió comprar Pantalón. Su precio es de ${precio}. ¿Desea comprar el prodcuto?`)
-        if (validacion2 === false){
-            alert(`Muchas gracias por su visita`)
-        } else {
-            const direccion = prompt (`Ingrese su dirección para realizar el envío:`)
-            alert(`Su artículo será enviado a ${direccion}`)
-            alert(`Muchas gracias por su compra`)
-        }
-        break
-    case 3:
-        //Validamos el valor ingresado
-        const validacion3 = confirm(`Usted eleigió comprar Buzo. Su precio es de ${precio}. ¿Desea comprar el prodcuto?`);
-        if (validacion3 === false){
-            alert(`Muchas gracias por su visita`);
-        } else {
-            const direccion = prompt (`Ingrese su dirección para realizar el envío:`);
-            alert(`Su artículo será enviado a ${direccion}`);
-            alert(`Muchas gracias por su compra`);
-        }
-        break
+let nombre = ""
+while(nombre === ""){
+    nombre = prompt("Ante de comenzar, por favor ingrese su nombre:")
+    if(nombre === ""){
+        alert(`Por favor ingrese su nombre:`)
     }
+} 
+//Saludo de bienvenida
+alert(`Bienvenido ${nombre} a la tienda`)
+//Preguntar filtrado de 2 productos
+const producto1 = ["Nombre", "Direccion", 4000]
+const producto2 = ["Apellido", "Apellido", 5000]
+console.log(producto1)
+console.log(producto2)
+//Se ofrecen las categorías disponibles
+alert(`Estas son las categorias de productos disponibles: 1.- "Producto 1" 2.- "Producto 2"`)
+//Se solicita elegir una opción
+let categoria = 0
+while(categoria !==1 && categoria !==2){
+    categoria = parseInt(prompt(`Estas son las categorías de productos disponibles: 1.- "Producto 1" 2.- "Producto 2". Seleccione el número de opción elegida:`))
+    if(categoria !== 1 && categoria !== 2){
+        alert(`Por favor seleccione sólo una de las opciones disponibles.`)
+    }
+} 
+//Selección de producto - creación de carrito de compras
+let productoElegido = []
+productoElegido.push(producto1[categoria])
+console.log(productoElegido)
+//Si no se encuentra el producto, hay que preguntar nuevamente
+
+//Se solicita confirme o rechace la elección
+const respuesta = parseInt(confirm(`Eligió ${NOMBREPRODUCTO}, ${DESCRIPCION} y cuyo precio es ${PRECIO}. ¿Desea realizar la compra?`))
+//Respuesta final
+if(respuesta === true){
+    //El plazo de envío estàndar es de 5 días
+    let fechaDeHoy = new Date()
+    let fechaDeEnvio = new Date(parseInt(fechaDeHoy.getDate()) + 5)
+    const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"]
+    let mes = meses[(parseInt(fechaDeEnvio.getMonth())-1)]
+    alert(`Gracias por su compra. Tiene un envío de 5 (cinco) días a partir de hoy, así que llegará el día ${fechaDeEnvio.getDate()} de ${mes}. Hasta la próxima.`)
+
+
 }
-calcular (producto);
